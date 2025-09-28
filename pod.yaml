@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-second-image
+  labels:
+    app: deploy-second-image
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: deploy-second-image
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: deploy-second-image
+    spec:
+      containers:
+        - image: aniketjadhav09/my-springboot-application
+          name: deploy-second-image
+          resources:
+            requests:
+              cpu: 200m
+              memory: "50Mi"
+            limits:
+              cpu: 500m
+              memory: "150Mi"
+          ports:
+            - containerPort: 3000
+
+
